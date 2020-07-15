@@ -1,51 +1,69 @@
-import React from 'react';
+import React, {useState} from 'react';
+import {Collapse, Navbar, Nav,NavItem,NavLink, NavbarBrand,NavbarToggler } from 'reactstrap'
+import logoFurg from '../../assets/logo3.png'
+import logoC3 from '../../assets/C3.png'
+import { Link } from 'react-router-dom' ;
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faVirus } from "@fortawesome/free-solid-svg-icons";
 import './styles.css';
 
-
-import { Collapse, Navbar, Nav,NavItem,NavLink } from 'reactstrap'
-import logoFurg from '../../assets/logo.png'
-import logoC3 from '../../assets/C3.png'
-
-export default class Header extends React.Component {
-  render(){
+const Header = (props)=>{
+    const [isOpen, setIsOpen] = useState(false);
+  
+    const toggle = () => setIsOpen(!isOpen);
+  
     return (
-      <div className="navContainer">
-
-        <Navbar light expand="md">
-
+      <div className="ContainerNav">
+        <Navbar light expand="md" className="md-5 portalImg">
           <Collapse navbar>
-
-            <Nav  className="mr-auto" navbar> 
-              <a href="https://www.furg.br/">
-              <img src={logoFurg} alt="Logo Furg"/></a>
-              
+            <Nav navbar> 
+            <NavItem>
+                <NavLink href="https://www.furg.br/">
+                  <img class="furg" src={logoFurg} alt="Logo Furg"/>
+                </NavLink>              
+              </NavItem>
+            <NavItem>
+              <NavLink href="http://www.c3.furg.br/">
+                <img class="c3" src={logoC3} alt="Logo C3"/>
+              </NavLink>   
+            </NavItem>  
             </Nav>
-
-            <Nav  className="mr-auto" navbar> 
-
-            </Nav>
-
           </Collapse>
+            
+          <NavbarBrand className=" mx-auto logo-title">
+            <Link to="/" className="Headerlinks"><FontAwesomeIcon  icon={faVirus} />             
+            ITeCCorona  
+            </Link> 
+          </NavbarBrand>
 
-          <Nav href="/" className=" mr-auto logo-title  font-weight-bold">            
-            iTeCorona - Rio Grande do Sul
-          </Nav>
+          <NavbarToggler onClick={toggle} className="mr-2"/>
+            <Collapse isOpen={isOpen} navbar>    
 
-          <Collapse navbar>
+              <Nav className="navPortal ml-auto"> 
+                <NavItem className="portal">
+                    <NavLink className="LinkTitle" href="http://www.riogrande.rs.gov.br/corona/">
+                        Portal
+                    </NavLink>
+                </NavItem>
+                
+                <NavItem className="portal">
+                  <NavLink className="LinkTitle" >
+                    <Link to="/about" className="LinkTitle " >
+                      Sobre nós                            
+                    </Link>
+                  </NavLink>
+                </NavItem>
 
-            <Nav className="mr-auto" navbar>
+                <NavItem className="portal">
+                  <NavLink className="LinkTitle"  href="https://github.com/Gabriellavoura/covidAnalytics">
+                    Github
+                  </NavLink>
+                </NavItem>
             </Nav>
-
-            <Nav>
-              <a href="http://www.c3.furg.br/">
-              <img src={logoC3} alt="Logo C3"/></a>
-            </Nav>
-
           </Collapse>
-
         </Navbar>
 
       </div>
     );
-  }
 }
+export default Header;

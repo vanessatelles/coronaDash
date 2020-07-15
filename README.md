@@ -1,4 +1,4 @@
-# Covid19 - Data Visualization
+# Covid Analytics - Data Visualization
 
 > Dashboard para visualização dos dados do estado do Rio Grande do Sul
 
@@ -11,22 +11,46 @@ npm install
 npm start
 ```
 
-## Release History
 
+
+## Release History
+* 0.1.0
+    * Production version
+    
 * 0.0.1
     * Work in progress
+
+
 
 ## Authors
 
 Gabriel Lavoura – [@gabriel_lavoura](https://twitter.com/gabriel_lavoura)
 
-Vanessa Telles - [@tellesvanessa07](https://twitter.com/tellesvanessa07)
+Vanessa Telles – [@tellesvanessa07](https://www.linkedin.com/in/vanessa-telles-da-silva-8ab4b614a/)
+
+Willian Lemos –
+
+Augusto Lamin –
+
+Felipe Marques –
+
+Lucas Ribeiro –
 
 Distributed under the MIT license. See ``LICENSE`` for more information.
+
+---
 
 [https://github.com/gabriellavoura/](https://github.com/Gabriellavoura)
 
 [https://github.com/vanessatelles/](https://github.com/vanessatelles)
+
+[https://github.com/Willblemos/](https://github.com/Willblemos)
+
+[https://github.com/Lastopsop/](https://github.com/Lastopsop)
+
+[https://github.com/FelpsZMS/](https://github.com/FelpsZMS)
+
+[https://github.com/luucasrb/](https://github.com/luucasrb)
 
 ## Contributing
 

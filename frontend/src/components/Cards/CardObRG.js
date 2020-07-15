@@ -15,11 +15,11 @@ class CardOb extends React.Component{
   
 
   componentDidMount(){
-    axios.get("https://brasil.io/api/dataset/covid19/caso/data?is_last=True&state=RS&place_type=state")
+    axios.get("https://brasil.io/api/dataset/covid19/caso/data/?is_last=True&state=RS&place_type=city&city=Rio%20Grande")
     .then(res => {
       this.setState({results: res.data.results});     
-      document.getElementById("deaths").innerHTML = this.state.results[0].deaths;
-      document.getElementById("deaths_atualiza").innerHTML = "Última atualização em: "+ formatDate(this.state.results[0].date); 
+      document.getElementById("deathsrg").innerHTML = this.state.results[0].deaths;
+      document.getElementById("deaths_atualizarg").innerHTML = "Última atualização em: "+ formatDate(this.state.results[0].date); 
  
     });
   }
@@ -30,14 +30,14 @@ class CardOb extends React.Component{
         <Card className="ObCard">
           <CardBody>
 
-            <CardTitle id="deaths" tag="h4" className=" mb-2 mb-xl-2 ObTitle">
+            <CardTitle id="deathsrg" tag="h4" className=" mb-2 mb-xl-2 ObTitle">
               
             </CardTitle>  
 
             <span className="h8 mb-2 font-weight-bold mb-xl-2">
-               Óbitos no RS
+               Óbitos em Rio Grande
             </span><br></br>
-            <span id="deaths_atualiza" className="small font-weight-light" >               
+            <span id="deaths_atualizarg" className="small font-weight-light" >               
             </span>
                                       
           </CardBody>

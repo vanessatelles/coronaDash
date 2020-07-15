@@ -14,14 +14,14 @@ function formatDate (input) {
   return day + '/' + month;
 }
 
-class GraphicCovid extends React.Component{
+class GraphicCovidRG extends React.Component{
 
   chartRef = React.createRef();
 
   componentDidMount() {
 
     
-    axios.get("https://brasil.io/api/dataset/covid19/caso/data?state=RS&place_type=state")
+    axios.get("https://brasil.io/api/dataset/covid19/caso/data/?state=RS&place_type=city&city=Rio%20Grande")
     .then(res => {
       this.setState({results: res.data.results});
       for(i=0; i<10; i++){
@@ -46,7 +46,7 @@ class GraphicCovid extends React.Component{
                 label: "Casos Confirmados",
                 data: numero,
                 fill: false,
-                borderColor: "#f0932b"
+                borderColor: "#f0c22b"
               }
             ]
       },
@@ -73,7 +73,7 @@ class GraphicCovid extends React.Component{
           <CardBody>
 
             <CardTitle tag="h5" className=" mb-2 mb-xl-2 font-weight-bold">
-              Casos Confirmados no RS
+              Casos Confirmados em Rio Grande
             </CardTitle> 
 
             <div>
@@ -86,4 +86,4 @@ class GraphicCovid extends React.Component{
     );
   }
 }
-export default GraphicCovid;
+export default GraphicCovidRG;

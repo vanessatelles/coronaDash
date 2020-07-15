@@ -1,9 +1,9 @@
 import React from 'react';
 import './styles.css';
 
-
 import { Card, CardBody, CardTitle, Table } from 'reactstrap';
 import axios from 'axios';
+import {dynamic_sort} from './TableCovid';
 
 class TableCovidRS extends React.Component{
   state = {
@@ -13,8 +13,23 @@ class TableCovidRS extends React.Component{
   componentDidMount(){
     axios.get("https://brasil.io/api/dataset/covid19/caso/data?is_last=True&state=RS")
     .then(res => {
-      this.setState({results: res.data.results});
-      console.log(this.state.results[1])
+      var i = 0;
+      var top10 = [];
+
+
+      for (i = 0; i < res.data.results.length; i++) {
+        top10.push(res.data.results[i])
+      }
+
+      top10 = top10.sort(dynamic_sort("confirmed", "desc"));
+      top10.shift();
+      top10.length = 10;
+
+      // console.log(top10);
+      
+
+      this.setState({results: top10});
+      // console.log(this.state.results[1])
     });
   }
 
@@ -28,8 +43,8 @@ class TableCovidRS extends React.Component{
 
           <CardBody>
 
-            <CardTitle tag="h4" className=" mb-2 mb-xl-2 font-weight-bold">
-              Cidades do Rio Grande do Sul
+            <CardTitle tag="h4" className="TabTitle mb-2 mb-xl-2 font-weight-bold">
+              Cidades com maior número de casos confirmados no RS
             </CardTitle> 
 
           </CardBody> 
@@ -41,7 +56,7 @@ class TableCovidRS extends React.Component{
                 <th>#</th>
                 <th>Cidade</th>
                 <th>Casos Confirmados</th>
-                <th>Mortes</th>
+                <th>Óbitos</th>
               </tr>
             </thead>
 
